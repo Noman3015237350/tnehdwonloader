@@ -1,0 +1,49 @@
+{
+  "version": 2,
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/health",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/api/create",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/api/api_keys",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/api/delete",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/api/list",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ]
+}
